@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TrackMonitor.Controls/TrackMonitor.Controls.csproj" />
+  <Project Path="TrackMonitor.Demo/TrackMonitor.Demo.csproj" />
+</Solution>

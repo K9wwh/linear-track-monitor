@@ -1,0 +1,50 @@
+<Window x:Class="TrackMonitor.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrackMonitor.Demo"
+        xmlns:vm="clr-namespace:TrackMonitor.Demo.ViewModels"
+        xmlns:tm="clr-namespace:TrackMonitor.Controls;assembly=TrackMonitor.Controls"
+        mc:Ignorable="d"
+        Title="滑轨监控控件 Demo" Height="400" Width="900"
+        Background="#2D2D30">
+
+    <!-- 在 XAML 里声明 VM 作 DataContext:Min/Max 写在这里,成为控件与 VM 共用的单一真相来源 -->
+    <Window.DataContext>
+        <vm:AxisMonitorViewModel Minimum="-100" Maximum="100"/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- 仅控件自用的配置(动画/方向/平滑窗口)写字面量;Min/Max 因 VM 也要用,绑定到 VM(单一真相来源);实时数据(Position/Target/故障)绑定 -->
+            <tm:LinearTrackMonitor x:Name="TrackMonitor"
+                Height="150"
+                Width="700"
+                Orientation="Horizontal"
+                SamplePeriod="0:0:0.1"
+                AnimationDuration="0:0:0.1"
+                SpeedSmoothingWindow="1"
+                Minimum="{Binding Minimum}"
+                Maximum="{Binding Maximum}"
+                Position="{Binding Position}"
+                TargetPosition="{Binding TargetPosition}"
+                IsFaulted="{Binding IsFaulted}"/>
+
+            <!-- 仅控件自用的配置(动画/方向/平滑窗口)写字面量;Min/Max 因 VM 也要用,绑定到 VM(单一真相来源);实时数据(Position/Target/故障)绑定 -->
+            <!-- Speed / Eta / Status 均由控件内部计算,不再从 VM 喂入 -->
+
+
+            <!-- 交互区:输入目标 + 两个命令按钮 -->
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
+                <TextBlock Text="目标位置:" Foreground="#DDDDDD" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <TextBox Width="80" VerticalContentAlignment="Center"
+                         Text="{Binding TargetInput}"/>
+                <Button Content="运动到目标" Command="{Binding StartCommand}" Margin="10,0,0,0" Padding="12,5"/>
+                <Button Content="复位到 0"   Command="{Binding ResetCommand}" Margin="8,0,0,0"  Padding="12,5"/>
+                <Button Content="随机巡航"   Command="{Binding WanderCommand}" Margin="8,0,0,0"  Padding="12,5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
