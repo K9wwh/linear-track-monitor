@@ -7,4 +7,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>TrackMonitor.Controls</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>K9wwh</Authors>
+    <Description>A lookless WPF control that visualizes a moving part on a linear track. Feed it Position and it derives speed, ETA and running/idle/fault status internally — no third-party dependencies. 线性滑轨位置监视 WPF 无外观自定义控件。</Description>
+    <PackageTags>wpf;control;custom-control;lookless;automation;hmi;visualization</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/K9wwh/linear-track-monitor</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/K9wwh/linear-track-monitor</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
 </Project>
