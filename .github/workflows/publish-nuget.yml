@@ -33,5 +33,13 @@ jobs:
         with:
           user: KW994
 
+      # Resolve the .nupkg explicitly: PowerShell (the default shell on Windows
+      # runners) does not expand globs into arguments, so passing nupkg/*.nupkg
+      # straight to dotnet fails with "File does not exist".
       - name: Push
-        run: dotnet nuget push nupkg/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        shell: pwsh
+        run: |
+          $pkg = Get-ChildItem nupkg/*.nupkg | Select-Object -First 1
+          if (-not $pkg) { throw "No .nupkg found in nupkg/" }
+          Write-Host "Pushing $($pkg.Name)"
+          dotnet nuget push $pkg.FullName --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
