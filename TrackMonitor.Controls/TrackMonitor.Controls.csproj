@@ -12,14 +12,14 @@
 
     <!-- 版本号:三个都要设。只设 Version 的话程序集版本仍是 1.0.0.0,
          两个不同的二进制会自称同一个版本,现场排查时分不清装的是哪一版。 -->
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
     <Product>LinearTrackMonitor</Product>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>TrackMonitor.Controls</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>K9wwh</Authors>
     <Description>A lookless WPF control that visualizes a moving part on a linear track. Feed it Position and it derives speed, ETA and running/idle/fault status internally — no third-party dependencies. 线性滑轨位置监视 WPF 无外观自定义控件。</Description>
     <PackageTags>wpf;control;custom-control;lookless;automation;hmi;visualization</PackageTags>

@@ -543,6 +543,8 @@ public class LinearTrackMonitor : Control
     /// 预计剩余到达时间 ETA(秒)。只读:由内部引擎用**平滑后**的 <see cref="Speed"/> 算出。
     /// 无目标、目标为非有限值、或 |速度| 已近 0(≤1e-3,避免除以极小数得到天文数字)时为 0。
     /// 注意置 0 发生在**下一拍引擎**,不是赋值当时。
+    /// ⚠️ 刚起步的头几拍读数会明显偏大:静止期采到的一串 0 还留在滑动平均窗口里拉低 <see cref="Speed"/>,
+    /// 且首拍往往只截到一段周期。要等约 <see cref="SpeedSmoothingWindow"/> 拍才收敛,详见 README「注意」。
     /// 注意 ETA 只按距离与速率估算、**不判方向**:背离目标行驶时仍会给出一个有限的倒计时。
     /// </summary>
     public double Eta
