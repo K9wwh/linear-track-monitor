@@ -1,6 +1,6 @@
 # LinearTrackMonitor
 
-**English** · [中文](README.cn.md)
+**English** · [中文](https://github.com/K9wwh/linear-track-monitor/blob/master/README.cn.md)
 
 A WPF lookless custom control (无外观自定义控件, a lookless `Control`): a read-only display of the live state of a single moving part on a linear track. **It ships its own calculation engine — the caller only feeds `Position`, and the control derives speed / ETA / status internally.** One-way data flow, no user interaction.
 
