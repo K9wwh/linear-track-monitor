@@ -95,7 +95,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" Foreground="#9AA0A6" Margin="0,0,0,12"
                                Text="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0.#}}"/>
-                    <!-- 上下留 14px:滑块到尽头时会探出半个身位(10px),给标注留出不被遮挡的空间 -->
+                    <!-- 上下各留 12px:滑块到尽头时会探出半个身位(20px 的一半 = 10px),给端点标注留出不被遮挡的空间 -->
                     <Grid Grid.Row="1">
                         <Border Width="6" CornerRadius="3" Background="#444"
                                 HorizontalAlignment="Center" VerticalAlignment="Stretch"/>

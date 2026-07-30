@@ -5,11 +5,21 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- 生成 XML 文档文件:使用方只引用 DLL 时,把它和 DLL 放在一起就能拿到 IntelliSense 提示。
+         副作用:任何公开成员缺 /// 注释都会报 CS1591,所以这份工程要求公开面 100% 有注释。 -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- 版本号:三个都要设。只设 Version 的话程序集版本仍是 1.0.0.0,
+         两个不同的二进制会自称同一个版本,现场排查时分不清装的是哪一版。 -->
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Product>LinearTrackMonitor</Product>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>TrackMonitor.Controls</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>K9wwh</Authors>
     <Description>A lookless WPF control that visualizes a moving part on a linear track. Feed it Position and it derives speed, ETA and running/idle/fault status internally — no third-party dependencies. 线性滑轨位置监视 WPF 无外观自定义控件。</Description>
     <PackageTags>wpf;control;custom-control;lookless;automation;hmi;visualization</PackageTags>
